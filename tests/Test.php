@@ -50,6 +50,7 @@ class VatTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(VatNumber::check('IE', '1234567XX'));
         $this->assertTrue(VatNumber::check('IT', '00154189997'));
         $this->assertTrue(VatNumber::check('LV', '12345678901'));
+        $this->assertTrue(VatNumber::check('IT', '01573850516'));
         $this->assertTrue(VatNumber::check('LT', '123456789'));
         $this->assertTrue(VatNumber::check('LT', '123456789012'));
         $this->assertTrue(VatNumber::check('LU', '12345678'));
@@ -105,7 +106,7 @@ class VatTest extends PHPUnit_Framework_TestCase
     public function testCheckWithInvalidCharacters()
     {
         $this->assertFalse(VatNumber::check('AT', 'A12345678'));
-        $this->assertFalse(VatNumber::check('IT', 'IT00154189997'));
+        $this->assertFalse(VatNumber::check('IT', '01573850514'));
         $this->assertFalse(VatNumber::check('NO', '123456789MV'));
     }
 }
