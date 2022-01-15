@@ -15,6 +15,7 @@ namespace Tox82\VatNumber;
  * @author   Emanuele "ToX" Toscano <toss82@gmail.com>
  * @license  GNU General Public License; <https://www.gnu.org/licenses/gpl-3.0.en.html>
  * @link     https://www.gov.uk/guidance/vat-eu-country-codes-vat-numbers-and-vat-in-other-languages
+ * @link     https://en.wikipedia.org/wiki/VAT_identification_number
  */
 class Validate
 {
@@ -96,6 +97,9 @@ class Validate
         case "NL":
             // 12 characters. The tenth character is always B
             return self::checkLength($code, 12, 12) && self::checkNetherlands($code);
+        case "NO":
+            // 9 characters. 12 when it contains the letters MVA
+            return self::checkLength($code, 9, 12) && self::checkNorway($code);
         case "PL":
             // 10 characters.
             return self::checkLength($code, 10, 10) && self::numbersOnly($code);
@@ -291,6 +295,27 @@ class Validate
         }
 
         return true;
+    }
+
+    /**
+     * Additional validations for Norway
+     *
+     * @param string $code Regional VAT code
+     *
+     * @return bool
+     */
+    public static function checkNorway(string $code): bool
+    {
+        $return = false;
+
+        // the string must be 9 digits, or 9 digits followed by MVA
+        if (preg_match('/^[0-9]{9}$/i', $code)) {
+            $return = true;
+        } elseif (preg_match('/^[0-9]{9}[MVA]{3}$/i', $code)) {
+            $return = true;
+        }
+        
+        return $return;
     }
 
     /**

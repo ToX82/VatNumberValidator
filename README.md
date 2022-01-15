@@ -2,7 +2,9 @@
 ## A formal VAT number validator
 
 It's not a full validation tool, it just checks that the VAT number is formally valid: eg. 11 chars, digits only, etc.
-It's built using these rules: https://www.gov.uk/guidance/vat-eu-country-codes-vat-numbers-and-vat-in-other-languages
+It's built using these rules:
+ * https://www.gov.uk/guidance/vat-eu-country-codes-vat-numbers-and-vat-in-other-languages
+ * https://en.wikipedia.org/wiki/VAT_identification_number
 
 It requires PHP >= 7.0.
 
@@ -17,7 +19,10 @@ Usage
 Just load the Validate class and execute a check, passing the country code and VAT code as parameters:
 
 ```php
-$validator = new Tox82\Validate\ValidateVat;
+use Tox82\VatNumber\Validate;
+
+...
+
 echo Validate::check('FR', '12345678901'); // true
 echo Validate::check('HU', '12345678'); // true
 echo Validate::check('PT', '123456789'); // true

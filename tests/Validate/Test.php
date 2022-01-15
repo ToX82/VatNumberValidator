@@ -55,6 +55,8 @@ class VatTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(Validate::check('LU', '12345678'));
         $this->assertTrue(Validate::check('MT', '12345678'));
         $this->assertTrue(Validate::check('NL', '123456789B01'));
+        $this->assertTrue(Validate::check('NO', '123456789'));
+        $this->assertTrue(Validate::check('NO', '123456789MVA'));
         $this->assertTrue(Validate::check('PL', '1234567890'));
         $this->assertTrue(Validate::check('PT', '123456789'));
         $this->assertTrue(Validate::check('RO', '12'));
@@ -104,5 +106,6 @@ class VatTest extends PHPUnit_Framework_TestCase
     {
         $this->assertFalse(Validate::check('AT', 'A12345678'));
         $this->assertFalse(Validate::check('IT', 'IT00154189997'));
+        $this->assertFalse(Validate::check('NO', '123456789MV'));
     }
 }
