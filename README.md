@@ -18,9 +18,12 @@ Just load the Validate class and execute a check, passing the country code and V
 
 ```php
 $validator = new Tox82\Validate\ValidateVat;
-$isValid = $validator->check('GB', '731331179');
+echo Validate::check('FR', '12345678901'); // true
+echo Validate::check('HU', '12345678'); // true
+echo Validate::check('PT', '123456789'); // true
+echo Validate::check('SE', '123456789012'); // true
 
-// $isValid can be true or false
+echo Validate::check('AT', 'U123456780'); // false because of invalid number's length
 ```
 
 Resources
