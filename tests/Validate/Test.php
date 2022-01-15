@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Tox82\Tests\Validator;
 
 use PHPUnit_Framework_TestCase;
-use Tox82\VatNumber\Validate;
+use Tox82\VatNumber;
 
 /**
  * Tests!
@@ -23,57 +23,57 @@ class VatTest extends PHPUnit_Framework_TestCase
      */
     public function testCheckValids()
     {
-        $this->assertTrue(Validate::check('AT', 'U12345678'));
-        $this->assertTrue(Validate::check('BE', '1234567890'));
-        $this->assertTrue(Validate::check('BG', '123456789'));
-        $this->assertTrue(Validate::check('BG', '1234567890'));
-        $this->assertTrue(Validate::check('HR', '12345678901'));
-        $this->assertTrue(Validate::check('CH', '123.456.789'));
-        $this->assertTrue(Validate::check('CY', '12345678X'));
-        $this->assertTrue(Validate::check('CZ', '12345678'));
-        $this->assertTrue(Validate::check('CZ', '123456789'));
-        $this->assertTrue(Validate::check('CZ', '1234567890'));
-        $this->assertTrue(Validate::check('DK', '12345678'));
-        $this->assertTrue(Validate::check('EE', '123456789'));
-        $this->assertTrue(Validate::check('FI', '12345678'));
-        $this->assertTrue(Validate::check('FR', '12345678901'));
-        $this->assertTrue(Validate::check('FR', '12345678901'));
-        $this->assertTrue(Validate::check('FR', 'X1234567890'));
-        $this->assertTrue(Validate::check('FR', '1X123456789'));
-        $this->assertTrue(Validate::check('FR', 'XX123456789'));
-        $this->assertTrue(Validate::check('DE', '123456789'));
-        $this->assertTrue(Validate::check('EL', '123456789'));
-        $this->assertTrue(Validate::check('GB', '123456789'));
-        $this->assertTrue(Validate::check('HU', '12345678'));
-        $this->assertTrue(Validate::check('IE', '1234567X'));
-        $this->assertTrue(Validate::check('IE', '1X23456X'));
-        $this->assertTrue(Validate::check('IE', '1234567XX'));
-        $this->assertTrue(Validate::check('IT', '00154189997'));
-        $this->assertTrue(Validate::check('LV', '12345678901'));
-        $this->assertTrue(Validate::check('LT', '123456789'));
-        $this->assertTrue(Validate::check('LT', '123456789012'));
-        $this->assertTrue(Validate::check('LU', '12345678'));
-        $this->assertTrue(Validate::check('MT', '12345678'));
-        $this->assertTrue(Validate::check('NL', '123456789B01'));
-        $this->assertTrue(Validate::check('NO', '123456789'));
-        $this->assertTrue(Validate::check('NO', '123456789MVA'));
-        $this->assertTrue(Validate::check('PL', '1234567890'));
-        $this->assertTrue(Validate::check('PT', '123456789'));
-        $this->assertTrue(Validate::check('RO', '12'));
-        $this->assertTrue(Validate::check('RO', '123'));
-        $this->assertTrue(Validate::check('RO', '1234'));
-        $this->assertTrue(Validate::check('RO', '12345'));
-        $this->assertTrue(Validate::check('RO', '123456'));
-        $this->assertTrue(Validate::check('RO', '1234567'));
-        $this->assertTrue(Validate::check('RO', '12345678'));
-        $this->assertTrue(Validate::check('RO', '123456789'));
-        $this->assertTrue(Validate::check('RO', '1234567890'));
-        $this->assertTrue(Validate::check('SK', '1234567890'));
-        $this->assertTrue(Validate::check('SI', '12345678'));
-        $this->assertTrue(Validate::check('ES', 'X12345678'));
-        $this->assertTrue(Validate::check('ES', '12345678X'));
-        $this->assertTrue(Validate::check('ES', 'X1234567X'));
-        $this->assertTrue(Validate::check('SE', '123456789012'));
+        $this->assertTrue(VatNumber::check('AT', 'U12345678'));
+        $this->assertTrue(VatNumber::check('BE', '1234567890'));
+        $this->assertTrue(VatNumber::check('BG', '123456789'));
+        $this->assertTrue(VatNumber::check('BG', '1234567890'));
+        $this->assertTrue(VatNumber::check('HR', '12345678901'));
+        $this->assertTrue(VatNumber::check('CH', '123.456.789'));
+        $this->assertTrue(VatNumber::check('CY', '12345678X'));
+        $this->assertTrue(VatNumber::check('CZ', '12345678'));
+        $this->assertTrue(VatNumber::check('CZ', '123456789'));
+        $this->assertTrue(VatNumber::check('CZ', '1234567890'));
+        $this->assertTrue(VatNumber::check('DK', '12345678'));
+        $this->assertTrue(VatNumber::check('EE', '123456789'));
+        $this->assertTrue(VatNumber::check('FI', '12345678'));
+        $this->assertTrue(VatNumber::check('FR', '12345678901'));
+        $this->assertTrue(VatNumber::check('FR', '12345678901'));
+        $this->assertTrue(VatNumber::check('FR', 'X1234567890'));
+        $this->assertTrue(VatNumber::check('FR', '1X123456789'));
+        $this->assertTrue(VatNumber::check('FR', 'XX123456789'));
+        $this->assertTrue(VatNumber::check('DE', '123456789'));
+        $this->assertTrue(VatNumber::check('EL', '123456789'));
+        $this->assertTrue(VatNumber::check('GB', '123456789'));
+        $this->assertTrue(VatNumber::check('HU', '12345678'));
+        $this->assertTrue(VatNumber::check('IE', '1234567X'));
+        $this->assertTrue(VatNumber::check('IE', '1X23456X'));
+        $this->assertTrue(VatNumber::check('IE', '1234567XX'));
+        $this->assertTrue(VatNumber::check('IT', '00154189997'));
+        $this->assertTrue(VatNumber::check('LV', '12345678901'));
+        $this->assertTrue(VatNumber::check('LT', '123456789'));
+        $this->assertTrue(VatNumber::check('LT', '123456789012'));
+        $this->assertTrue(VatNumber::check('LU', '12345678'));
+        $this->assertTrue(VatNumber::check('MT', '12345678'));
+        $this->assertTrue(VatNumber::check('NL', '123456789B01'));
+        $this->assertTrue(VatNumber::check('NO', '123456789'));
+        $this->assertTrue(VatNumber::check('NO', '123456789MVA'));
+        $this->assertTrue(VatNumber::check('PL', '1234567890'));
+        $this->assertTrue(VatNumber::check('PT', '123456789'));
+        $this->assertTrue(VatNumber::check('RO', '12'));
+        $this->assertTrue(VatNumber::check('RO', '123'));
+        $this->assertTrue(VatNumber::check('RO', '1234'));
+        $this->assertTrue(VatNumber::check('RO', '12345'));
+        $this->assertTrue(VatNumber::check('RO', '123456'));
+        $this->assertTrue(VatNumber::check('RO', '1234567'));
+        $this->assertTrue(VatNumber::check('RO', '12345678'));
+        $this->assertTrue(VatNumber::check('RO', '123456789'));
+        $this->assertTrue(VatNumber::check('RO', '1234567890'));
+        $this->assertTrue(VatNumber::check('SK', '1234567890'));
+        $this->assertTrue(VatNumber::check('SI', '12345678'));
+        $this->assertTrue(VatNumber::check('ES', 'X12345678'));
+        $this->assertTrue(VatNumber::check('ES', '12345678X'));
+        $this->assertTrue(VatNumber::check('ES', 'X1234567X'));
+        $this->assertTrue(VatNumber::check('SE', '123456789012'));
     }
 
     /**
@@ -83,7 +83,7 @@ class VatTest extends PHPUnit_Framework_TestCase
      */
     public function testCheckWithUnexpectedCountry()
     {
-        $this->assertTrue(Validate::check('XX', '123456789'));
+        $this->assertTrue(VatNumber::check('XX', '123456789'));
     }
 
     /**
@@ -93,8 +93,8 @@ class VatTest extends PHPUnit_Framework_TestCase
      */
     public function testCheckWithInvalidLength()
     {
-        $this->assertFalse(Validate::check('AT', 'U123456780'));
-        $this->assertFalse(Validate::check('IT', '001541899970'));
+        $this->assertFalse(VatNumber::check('AT', 'U123456780'));
+        $this->assertFalse(VatNumber::check('IT', '001541899970'));
     }
 
     /**
@@ -104,8 +104,8 @@ class VatTest extends PHPUnit_Framework_TestCase
      */
     public function testCheckWithInvalidCharacters()
     {
-        $this->assertFalse(Validate::check('AT', 'A12345678'));
-        $this->assertFalse(Validate::check('IT', 'IT00154189997'));
-        $this->assertFalse(Validate::check('NO', '123456789MV'));
+        $this->assertFalse(VatNumber::check('AT', 'A12345678'));
+        $this->assertFalse(VatNumber::check('IT', 'IT00154189997'));
+        $this->assertFalse(VatNumber::check('NO', '123456789MV'));
     }
 }

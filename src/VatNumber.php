@@ -5,7 +5,7 @@ declare(strict_types=1);
  * Licensed under The GNU General Public License v3.0
  */
 
-namespace Tox82\VatNumber;
+namespace Tox82;
 
 /**
  * A simple, no dependency formal VAT number validator 
@@ -17,7 +17,7 @@ namespace Tox82\VatNumber;
  * @link     https://www.gov.uk/guidance/vat-eu-country-codes-vat-numbers-and-vat-in-other-languages
  * @link     https://en.wikipedia.org/wiki/VAT_identification_number
  */
-class Validate
+class VatNumber
 {
     /**
      * Performs a formal validation of a VAT number, using these rules:

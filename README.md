@@ -19,17 +19,22 @@ Usage
 Just load the Validate class and execute a check, passing the country code and VAT code as parameters:
 
 ```php
-use Tox82\VatNumber\Validate;
+use Tox82\VatNumber;
 
 ...
 
-echo Validate::check('FR', '12345678901'); // true
-echo Validate::check('HU', '12345678'); // true
-echo Validate::check('PT', '123456789'); // true
-echo Validate::check('SE', '123456789012'); // true
+echo VatNumber::check('FR', '12345678901'); // true
+echo VatNumber::check('HU', '12345678'); // true
+echo VatNumber::check('PT', '123456789'); // true
+echo VatNumber::check('SE', '123456789012'); // true
 
-echo Validate::check('AT', 'U123456780'); // false because of invalid number's length
+echo VatNumber::check('AT', 'U123456780'); // false because of invalid number's length
 ```
+
+TODO
+-----------
+
+Add specific, more robust validation for each country, when available. Eg. check digits. prefixes, suffixes, etc.
 
 Resources
 ---------
