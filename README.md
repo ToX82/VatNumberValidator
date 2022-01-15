@@ -8,7 +8,7 @@ It requires PHP >= 7.0.
 
 Installation:
 ```shell
-`composer require tox82/vatvalidator`
+composer require tox82/vatnumber-validator
 ```
 
 Usage
@@ -28,6 +28,6 @@ echo Validate::check('AT', 'U123456780'); // false because of invalid number's l
 
 Resources
 ---------
- * [Report issues](https://github.com/tox82/vatvalidator/issues)
- * [Send Pull Requests](https://github.com/tox82/vatvalidator/pulls)
- * [Check the main repository](https://github.com/tox82/vatvalidator)
+ * [Report issues](https://github.com/ToX82/VatNumberValidator/issues)
+ * [Send Pull Requests](https://github.com/ToX82/VatNumberValidator/pulls)
+ * [Check the main repository](https://github.com/ToX82/VatNumberValidator)
