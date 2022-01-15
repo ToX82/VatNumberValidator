@@ -23,7 +23,10 @@ class VatTest extends PHPUnit_Framework_TestCase
      */
     public function testCheckValids()
     {
+        $this->assertTrue(VatNumber::check('AL', 'K99999999L'));
+        $this->assertTrue(VatNumber::check('AL', 'L99999999G'));
         $this->assertTrue(VatNumber::check('AT', 'U12345678'));
+        $this->assertTrue(VatNumber::check('AU', '12345678901'));
         $this->assertTrue(VatNumber::check('BE', '1234567890'));
         $this->assertTrue(VatNumber::check('BG', '123456789'));
         $this->assertTrue(VatNumber::check('BG', '1234567890'));
@@ -54,6 +57,7 @@ class VatTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(VatNumber::check('LT', '123456789'));
         $this->assertTrue(VatNumber::check('LT', '123456789012'));
         $this->assertTrue(VatNumber::check('LU', '12345678'));
+        $this->assertTrue(VatNumber::check('MK', 'MK4032013544513'));
         $this->assertTrue(VatNumber::check('MT', '12345678'));
         $this->assertTrue(VatNumber::check('NL', '123456789B01'));
         $this->assertTrue(VatNumber::check('NO', '123456789'));
@@ -94,8 +98,11 @@ class VatTest extends PHPUnit_Framework_TestCase
      */
     public function testCheckWithInvalidLength()
     {
+        $this->assertFalse(VatNumber::check('AL', 'A999999999G'));
         $this->assertFalse(VatNumber::check('AT', 'U123456780'));
+        $this->assertFalse(VatNumber::check('AU', '123456789012'));
         $this->assertFalse(VatNumber::check('IT', '001541899970'));
+        $this->assertFalse(VatNumber::check('MK', 'MK40320135445131'));
     }
 
     /**
@@ -105,8 +112,12 @@ class VatTest extends PHPUnit_Framework_TestCase
      */
     public function testCheckWithInvalidCharacters()
     {
+        $this->assertFalse(VatNumber::check('AL', 'A99999999G'));
+        $this->assertFalse(VatNumber::check('AL', 'K999999999'));
         $this->assertFalse(VatNumber::check('AT', 'A12345678'));
+        $this->assertFalse(VatNumber::check('AU', 'A2345678901'));
         $this->assertFalse(VatNumber::check('IT', '01573850514'));
+        $this->assertFalse(VatNumber::check('MK', 'AA4032013544513'));
         $this->assertFalse(VatNumber::check('NO', '123456789MV'));
     }
 }

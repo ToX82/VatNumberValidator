@@ -31,9 +31,16 @@ class VatNumber
     public static function check(string $country, string $code): bool
     {
         switch ($country) {
+        case "AL":
+            // 10 characters, the first position following the prefix is "J" or "K" or "L", 
+            // and the last character is a letter
+            return self::checkLength($code, 10, 10) && self::checkAlbania($code);
         case "AT":
             // 9 characters. The first character is always ‘U’.
             return self::checkLength($code, 9, 9) && self::checkAustria($code);
+        case "AU":
+            // 11 digit number formed from a 9 digit unique identifier and two suffix check digits.
+            return self::checkLength($code, 11, 11) && self::numbersOnly($code);
         case "BE":
             // 10 characters
             return self::checkLength($code, 10, 10) && self::numbersOnly($code);
@@ -81,7 +88,7 @@ class VatNumber
             return self::checkLength($code, 8, 9) && self::checkIreland($code);
         case 'IT':
             // 11 characters.
-            return self::checkLength($code, 11, 11) && self::numbersOnly($code) && self::checkItaly($code);
+            return self::checkLength($code, 11, 11) && self::checkItaly($code);
         case "LV":
             // 11 characters.
             return self::checkLength($code, 11, 11) && self::numbersOnly($code);
@@ -91,6 +98,9 @@ class VatNumber
         case "LU":
             // 8 characters.
             return self::checkLength($code, 8, 8) && self::numbersOnly($code);
+        case "MK":
+            // 15 characters, the first two positions are for the prefix "MK", followed by 13 numbers
+            return self::checkLength($code, 15, 15) && self::checkNorthMacedonia($code);
         case "MT":
             // 8 characters.
             return self::checkLength($code, 8, 8) && self::numbersOnly($code);
@@ -150,6 +160,23 @@ class VatNumber
     public static function numbersOnly(string $code): bool
     {
         return is_numeric($code);
+    }
+
+    /**
+     * Additional validations for Albania
+     * Eg. K99999999L or L99999999G
+     *
+     * @param string $code VAT number
+     *
+     * @return bool
+     */
+    public static function checkAlbania(string $code): bool
+    {
+        if (!preg_match('/^[JKL]{1}[0-9]{8}[A-Z]{1}$/', $code)) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -278,6 +305,23 @@ class VatNumber
         }
 
         return $return;
+    }
+
+    /**
+     * Additional validations for NorthMacedonia
+     * Eg. MK4032013544513
+     *
+     * @param string $code Regional VAT code
+     *
+     * @return bool
+     */
+    public static function checkNorthMacedonia(string $code): bool
+    {
+        if (!preg_match('/^[M]{1}[K]{1}[0-9]{13}$/i', $code)) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
