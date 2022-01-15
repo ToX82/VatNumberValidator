@@ -1,0 +1,37 @@
+{
+    "name": "tox82/vatnumber-validator",
+    "description": "A simple, no dependency formal VAT number validator",
+    "keywords": [
+        "eu vat",
+        "vat number",
+        "validate eu vat",
+        "validate vat number",
+        "vat validator",
+        "vat number validator",
+        "vat",
+        "tva",
+        "tva number",
+        "validation",
+        "validator"
+    ],
+    "type": "library",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Emanuele ToX Toscano",
+            "email": "toss82@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tox82\\VatNumber\\": "src/VatNumber"
+        }
+    }
+}
