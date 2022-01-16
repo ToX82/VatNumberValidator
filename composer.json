@@ -1,6 +1,6 @@
 {
     "name": "tox82/vatnumber-validator",
-    "description": "A simple, no dependency formal VAT number validator, NOT using the VIES service.",
+    "description": "A simple VAT identification number validator, without any dependencies, NOT relying on the VIES service.",
     "keywords": [
         "eu vat",
         "vat number",
