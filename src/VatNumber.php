@@ -1,9 +1,6 @@
 <?php
-declare(strict_types=1);
 
-/**
- * Licensed under The GNU General Public License v3.0
- */
+declare(strict_types=1);
 
 namespace Tox82;
 
@@ -20,8 +17,7 @@ namespace Tox82;
 class VatNumber
 {
     /**
-     * Performs a formal validation of a VAT number, using these rules:
-     * https://www.gov.uk/guidance/vat-eu-country-codes-vat-numbers-and-vat-in-other-languages
+     * Public method that executes a formal validation of a VAT number
      *
      * @param string $country Country code
      * @param string $code    VAT number
@@ -34,103 +30,103 @@ class VatNumber
         case "AL":
             // 10 characters, the first position following the prefix is "J" or "K" or "L", 
             // and the last character is a letter
-            return self::checkLength($code, 10, 10) && self::checkAlbania($code);
+            return self::_checkLength($code, 10, 10) && self::_checkAlbania($code);
         case "AT":
             // 9 characters. The first character is always ‘U’.
-            return self::checkLength($code, 9, 9) && self::checkAustria($code);
+            return self::_checkLength($code, 9, 9) && self::_checkAustria($code);
         case "AU":
             // 11 digit number formed from a 9 digit unique identifier and two suffix check digits.
-            return self::checkLength($code, 11, 11) && self::numbersOnly($code);
+            return self::_checkLength($code, 11, 11) && self::_numbersOnly($code);
         case "BE":
             // 10 characters
-            return self::checkLength($code, 10, 10) && self::numbersOnly($code);
+            return self::_checkLength($code, 10, 10) && self::_numbersOnly($code);
         case "BG":
             // 9 or 10 characters.
-            return self::checkLength($code, 9, 10) && self::numbersOnly($code);
+            return self::_checkLength($code, 9, 10) && self::_numbersOnly($code);
         case "HR":
             // 11 characters.
-            return self::checkLength($code, 11, 11) && self::numbersOnly($code);
+            return self::_checkLength($code, 11, 11) && self::_numbersOnly($code);
         case "CH":
             // 11 characters. 3 segments of 3 digits, seperated by ".",
-            return self::checkLength($code, 11, 11) && self::checkSwitzerland($code);
+            return self::_checkLength($code, 11, 11) && self::_checkSwitzerland($code);
         case "CY":
             // 9 characters. The last character must always be a letter.
-            return self::checkLength($code, 9, 9) && self::checkCyprus($code);
+            return self::_checkLength($code, 9, 9) && self::_checkCyprus($code);
         case "CZ":
             // 8, 9 or 10 characters
-            return self::checkLength($code, 8, 10) && self::numbersOnly($code);
+            return self::_checkLength($code, 8, 10) && self::_numbersOnly($code);
         case "DK":
             // 8 characters.
-            return self::checkLength($code, 8, 8) && self::numbersOnly($code);
+            return self::_checkLength($code, 8, 8) && self::_numbersOnly($code);
         case "EE":
             // 9 characters.
-            return self::checkLength($code, 9, 9) && self::numbersOnly($code);
+            return self::_checkLength($code, 9, 9) && self::_numbersOnly($code);
         case "FI":
             // 8 characters.
-            return self::checkLength($code, 8, 8) && self::numbersOnly($code);
+            return self::_checkLength($code, 8, 8) && self::_numbersOnly($code);
         case "FR":
             // 11 characters. May include alphabetical characters (any except O or I) as first or second or first and second characters.
-            return self::checkLength($code, 11, 11) && self::checkFrance($code);
+            return self::_checkLength($code, 11, 11) && self::_checkFrance($code);
         case "DE":
             // 9 or 10 characters.
-            return self::checkLength($code, 9, 9) && self::numbersOnly($code);
+            return self::_checkLength($code, 9, 9) && self::_numbersOnly($code);
         case "EL":
             // 9 characters.
-            return self::checkLength($code, 9, 9) && self::numbersOnly($code);
+            return self::_checkLength($code, 9, 9) && self::_numbersOnly($code);
         case "GB":
             // 9 characters.
-            return self::checkLength($code, 9, 9) && self::numbersOnly($code);
+            return self::_checkLength($code, 9, 9) && self::_numbersOnly($code);
         case "HU":
             // 8 or 9 characters.
-            return self::checkLength($code, 8, 8) && self::numbersOnly($code);
+            return self::_checkLength($code, 8, 8) && self::_numbersOnly($code);
         case "IE":
             // 8 or 9 characters. Includes one or two alphabetical characters (last, or second and last, or last 2).
-            return self::checkLength($code, 8, 9) && self::checkIreland($code);
+            return self::_checkLength($code, 8, 9) && self::_checkIreland($code);
         case 'IT':
             // 11 characters.
-            return self::checkLength($code, 11, 11) && self::checkItaly($code);
+            return self::_checkLength($code, 11, 11) && self::_checkItaly($code);
         case "LV":
             // 11 characters.
-            return self::checkLength($code, 11, 11) && self::numbersOnly($code);
+            return self::_checkLength($code, 11, 11) && self::_numbersOnly($code);
         case "LT":
             // 9 or 12 characters.
-            return self::checkLength($code, 9, 12) && self::numbersOnly($code);
+            return self::_checkLength($code, 9, 12) && self::_numbersOnly($code);
         case "LU":
             // 8 characters.
-            return self::checkLength($code, 8, 8) && self::numbersOnly($code);
+            return self::_checkLength($code, 8, 8) && self::_numbersOnly($code);
         case "MK":
             // 15 characters, the first two positions are for the prefix "MK", followed by 13 numbers
-            return self::checkLength($code, 15, 15) && self::checkNorthMacedonia($code);
+            return self::_checkLength($code, 15, 15) && self::_checkNorthMacedonia($code);
         case "MT":
             // 8 characters.
-            return self::checkLength($code, 8, 8) && self::numbersOnly($code);
+            return self::_checkLength($code, 8, 8) && self::_numbersOnly($code);
         case "NL":
             // 12 characters. The tenth character is always B
-            return self::checkLength($code, 12, 12) && self::checkNetherlands($code);
+            return self::_checkLength($code, 12, 12) && self::_checkNetherlands($code);
         case "NO":
             // 9 characters. 12 when it contains the letters MVA
-            return self::checkLength($code, 9, 12) && self::checkNorway($code);
+            return self::_checkLength($code, 9, 12) && self::_checkNorway($code);
         case "PL":
             // 10 characters.
-            return self::checkLength($code, 10, 10) && self::numbersOnly($code);
+            return self::_checkLength($code, 10, 10) && self::_numbersOnly($code);
         case "PT":
             // 9 characters.
-            return self::checkLength($code, 9, 9) && self::numbersOnly($code);
+            return self::_checkLength($code, 9, 9) && self::_numbersOnly($code);
         case "RO":
             // From 2 to 10 characters.
-            return self::checkLength($code, 2, 10) && self::numbersOnly($code);
+            return self::_checkLength($code, 2, 10) && self::_numbersOnly($code);
         case "SK":
             // 10 characters.
-            return self::checkLength($code, 10, 10) && self::numbersOnly($code);
+            return self::_checkLength($code, 10, 10) && self::_numbersOnly($code);
         case "SI":
             // 8 characters.
-            return self::checkLength($code, 8, 8) && self::numbersOnly($code);
+            return self::_checkLength($code, 8, 8) && self::_numbersOnly($code);
         case "ES":
             // 9 characters. Includes one or two alphabetical characters (first or last or first and last).
-            return self::checkLength($code, 9, 9) && self::checkSpain($code);
+            return self::_checkLength($code, 9, 9) && self::_checkSpain($code);
         case "SE":
             // 12 characters.
-            return self::checkLength($code, 12, 12) && self::numbersOnly($code);
+            return self::_checkLength($code, 12, 12) && self::_numbersOnly($code);
         }
 
         return true;
@@ -145,7 +141,7 @@ class VatNumber
      *
      * @return bool
      */
-    public static function checkLength(string $code, int $min, int $max): bool
+    private static function _checkLength(string $code, int $min, int $max): bool
     {
         return strlen($code) >= $min && strlen($code) <= $max;
     }
@@ -157,7 +153,7 @@ class VatNumber
      *
      * @return bool
      */
-    public static function numbersOnly(string $code): bool
+    private static function _numbersOnly(string $code): bool
     {
         return is_numeric($code);
     }
@@ -170,7 +166,7 @@ class VatNumber
      *
      * @return bool
      */
-    public static function checkAlbania(string $code): bool
+    private static function _checkAlbania(string $code): bool
     {
         if (!preg_match('/^[JKL]{1}[0-9]{8}[A-Z]{1}$/', $code)) {
             return false;
@@ -187,7 +183,7 @@ class VatNumber
      *
      * @return bool
      */
-    public static function checkAustria(string $code): bool
+    private static function _checkAustria(string $code): bool
     {
         // The first character must be U
         if (!preg_match('/^[U]{1}[0-9]{8}$/i', $code)) {
@@ -205,7 +201,7 @@ class VatNumber
      *
      * @return bool
      */
-    public static function checkSwitzerland(string $code): bool
+    private static function _checkSwitzerland(string $code): bool
     {
         // The last character must be a letter
         if (!preg_match('/^[0-9]{3}[\.]{1}[0-9]{3}[\.]{1}[0-9]{3}$/i', $code)) {
@@ -223,7 +219,7 @@ class VatNumber
      *
      * @return bool
      */
-    public static function checkCyprus(string $code): bool
+    private static function _checkCyprus(string $code): bool
     {
         // The last character must be a letter
         if (!preg_match('/^[0-9]{8}[A-Z]{1}$/i', $code)) {
@@ -241,7 +237,7 @@ class VatNumber
      *
      * @return bool
      */
-    public static function checkFrance(string $code): bool
+    private static function _checkFrance(string $code): bool
     {
         // check that $code does not contain "O" or "I"
         if (strpos($code, 'O') !== false || strpos($code, 'I') !== false) {
@@ -263,7 +259,7 @@ class VatNumber
      *
      * @return bool
      */
-    public static function checkIreland(string $code): bool
+    private static function _checkIreland(string $code): bool
     {
         $return = false;
 
@@ -283,7 +279,7 @@ class VatNumber
      *
      * @return bool
      */
-    public static function checkItaly(string $code): bool
+    private static function _checkItaly(string $code): bool
     {
         $return = true;
 
@@ -315,7 +311,7 @@ class VatNumber
      *
      * @return bool
      */
-    public static function checkNorthMacedonia(string $code): bool
+    private static function _checkNorthMacedonia(string $code): bool
     {
         if (!preg_match('/^[M]{1}[K]{1}[0-9]{13}$/i', $code)) {
             return false;
@@ -331,7 +327,7 @@ class VatNumber
      *
      * @return bool
      */
-    public static function checkNetherlands(string $code): bool
+    private static function _checkNetherlands(string $code): bool
     {
         // the tenth character is always B
         if (!preg_match('/^[0-9]{9}[B]{1}[0-9]{2}$/i', $code)) {
@@ -348,7 +344,7 @@ class VatNumber
      *
      * @return bool
      */
-    public static function checkNorway(string $code): bool
+    private static function _checkNorway(string $code): bool
     {
         $return = false;
 
@@ -369,7 +365,7 @@ class VatNumber
      *
      * @return bool
      */
-    public static function checkSpain(string $code): bool
+    private static function _checkSpain(string $code): bool
     {
         // The first and last character might be letters
         if (!preg_match('/^[0-9A-Z]{1}[0-9]{7}[0-9A-Z]{1}$/i', $code)) {
