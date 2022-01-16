@@ -38,13 +38,19 @@ class VatNumber
             // 11 digit number formed from a 9 digit unique identifier and two suffix check digits.
             return self::_checkLength($code, 11, 11) && self::_numbersOnly($code);
         case "BE":
-            // 10 characters
+            // 10 digits.
             return self::_checkLength($code, 10, 10) && self::_numbersOnly($code);
         case "BG":
-            // 9 or 10 characters.
+            // 9 or 10 digits.
             return self::_checkLength($code, 9, 10) && self::_numbersOnly($code);
+        case "BY":
+            // 9 digits.
+            return self::_checkLength($code, 9, 9) && self::_numbersOnly($code);
+        case "CA":
+            // 9 characters.
+            return self::_checkLength($code, 9, 9);
         case "HR":
-            // 11 characters.
+            // 11 digits.
             return self::_checkLength($code, 11, 11) && self::_numbersOnly($code);
         case "CH":
             // 11 characters. 3 segments of 3 digits, seperated by ".",
@@ -53,80 +59,122 @@ class VatNumber
             // 9 characters. The last character must always be a letter.
             return self::_checkLength($code, 9, 9) && self::_checkCyprus($code);
         case "CZ":
-            // 8, 9 or 10 characters
+            // 8, 9 or 10 digitss
             return self::_checkLength($code, 8, 10) && self::_numbersOnly($code);
         case "DK":
-            // 8 characters.
+            // 8 digits.
             return self::_checkLength($code, 8, 8) && self::_numbersOnly($code);
         case "EE":
-            // 9 characters.
+            // 9 digits.
             return self::_checkLength($code, 9, 9) && self::_numbersOnly($code);
         case "FI":
-            // 8 characters.
+            // 8 digits.
             return self::_checkLength($code, 8, 8) && self::_numbersOnly($code);
         case "FR":
             // 11 characters. May include alphabetical characters (any except O or I) as first or second or first and second characters.
             return self::_checkLength($code, 11, 11) && self::_checkFrance($code);
         case "DE":
-            // 9 or 10 characters.
+            // 9 or 10 digits.
             return self::_checkLength($code, 9, 9) && self::_numbersOnly($code);
         case "EL":
-            // 9 characters.
+            // 9 digits.
             return self::_checkLength($code, 9, 9) && self::_numbersOnly($code);
+        case "ES":
+            // 9 characters. Includes one or two alphabetical characters (first or last or first and last).
+            return self::_checkLength($code, 9, 9) && self::_checkSpain($code);
         case "GB":
-            // 9 characters.
+            // 9 digits.
             return self::_checkLength($code, 9, 9) && self::_numbersOnly($code);
         case "HU":
-            // 8 or 9 characters.
+            // 8 or 9 digits.
             return self::_checkLength($code, 8, 8) && self::_numbersOnly($code);
+        case "ID":
+            // 15 digits.
+            return self::_checkLength($code, 15, 15) && self::_numbersOnly($code);
         case "IE":
             // 8 or 9 characters. Includes one or two alphabetical characters (last, or second and last, or last 2).
             return self::_checkLength($code, 8, 9) && self::_checkIreland($code);
+        case "IL":
+            // 9 digits.
+            return self::_checkLength($code, 9, 9) && self::_numbersOnly($code);
+        case "IN":
+            // 15 digits.
+            return self::_checkLength($code, 15, 15) && self::_numbersOnly($code);
+        case "IS":
+            // 5 or 6 characters.
+            return self::_checkLength($code, 5, 6);
         case 'IT':
             // 11 characters.
             return self::_checkLength($code, 11, 11) && self::_checkItaly($code);
         case "LV":
-            // 11 characters.
+            // 11 digits.
             return self::_checkLength($code, 11, 11) && self::_numbersOnly($code);
         case "LT":
-            // 9 or 12 characters.
+            // 9 or 12 digits.
             return self::_checkLength($code, 9, 12) && self::_numbersOnly($code);
         case "LU":
-            // 8 characters.
+            // 8 digits.
             return self::_checkLength($code, 8, 8) && self::_numbersOnly($code);
+        case "KZ":
+            // 12 digits.
+            return self::_checkLength($code, 12, 12) && self::_numbersOnly($code);
         case "MK":
             // 15 characters, the first two positions are for the prefix "MK", followed by 13 numbers
             return self::_checkLength($code, 15, 15) && self::_checkNorthMacedonia($code);
         case "MT":
-            // 8 characters.
+            // 8 digits.
             return self::_checkLength($code, 8, 8) && self::_numbersOnly($code);
+        case "NG":
+            // 12 digits and 1 dash, in the format 01012345-0001
+            return self::_checkLength($code, 13, 13) && self::_checkNigeria($code);
         case "NL":
             // 12 characters. The tenth character is always B
             return self::_checkLength($code, 12, 12) && self::_checkNetherlands($code);
         case "NO":
             // 9 characters. 12 when it contains the letters MVA
             return self::_checkLength($code, 9, 12) && self::_checkNorway($code);
+        case "NZ":
+            // 9 digits.
+            return self::_checkLength($code, 9, 9) && self::_numbersOnly($code);
         case "PL":
-            // 10 characters.
+            // 10 digits.
             return self::_checkLength($code, 10, 10) && self::_numbersOnly($code);
         case "PT":
-            // 9 characters.
+            // 9 digits.
             return self::_checkLength($code, 9, 9) && self::_numbersOnly($code);
         case "RO":
-            // From 2 to 10 characters.
+            // From 2 to 10 digits.
             return self::_checkLength($code, 2, 10) && self::_numbersOnly($code);
+        case "RS":
+            // 9 digits.
+            return self::_checkLength($code, 9, 9) && self::_numbersOnly($code);
+        case "RU":
+            // 10, 12 or 13 characters
+            return self::_checkLength($code, 10, 13) && self::_checkRussia($code);
+        case "SA":
+            // 15 digits.
+            return self::_checkLength($code, 15, 15) && self::_numbersOnly($code);
         case "SK":
-            // 10 characters.
+            // 10 digits.
             return self::_checkLength($code, 10, 10) && self::_numbersOnly($code);
         case "SI":
-            // 8 characters.
+            // 8 digits.
             return self::_checkLength($code, 8, 8) && self::_numbersOnly($code);
-        case "ES":
-            // 9 characters. Includes one or two alphabetical characters (first or last or first and last).
-            return self::_checkLength($code, 9, 9) && self::_checkSpain($code);
+        case "SM":
+            // 5 digits.
+            return self::_checkLength($code, 5, 5) && self::_numbersOnly($code);
         case "SE":
-            // 12 characters.
+            // 12 digits.
             return self::_checkLength($code, 12, 12) && self::_numbersOnly($code);
+        case "TR":
+            // 10 digits.
+            return self::_checkLength($code, 10, 10) && self::_numbersOnly($code);
+        case "UA":
+            // 12 digits.
+            return self::_checkLength($code, 12, 12) && self::_numbersOnly($code);
+        case "UZ":
+            // 9 digits.
+            return self::_checkLength($code, 9, 9) && self::_numbersOnly($code);
         }
 
         return true;
@@ -321,6 +369,23 @@ class VatNumber
     }
 
     /**
+     * Additional validations for Nigeria
+     * Eg. 01012345-0001
+     *
+     * @param string $code Regional VAT code
+     *
+     * @return bool
+     */
+    private static function _checkNigeria(string $code): bool
+    {
+        if (!preg_match('/^[0-9]{8}[-]{1}[0-9]{4}$/i', $code)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * Additional validations for Netherlands
      *
      * @param string $code Regional VAT code
@@ -356,6 +421,22 @@ class VatNumber
         }
         
         return $return;
+    }
+
+    /**
+     * Additional validations for Russia
+     *
+     * @param string $code Regional VAT code
+     *
+     * @return bool
+     */
+    private static function _checkRussia(string $code): bool
+    {
+        if (strlen($code) !== 10 && strlen($code) !== 12 && strlen($code) !== 13) {
+            return false;
+        }
+
+        return true;
     }
 
     /**

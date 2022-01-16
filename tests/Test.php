@@ -30,7 +30,9 @@ class VatTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(VatNumber::check('BE', '1234567890'));
         $this->assertTrue(VatNumber::check('BG', '123456789'));
         $this->assertTrue(VatNumber::check('BG', '1234567890'));
+        $this->assertTrue(VatNumber::check('BY', '190190190'));
         $this->assertTrue(VatNumber::check('HR', '12345678901'));
+        $this->assertTrue(VatNumber::check('CA', '1234567AB'));
         $this->assertTrue(VatNumber::check('CH', '123.456.789'));
         $this->assertTrue(VatNumber::check('CY', '12345678X'));
         $this->assertTrue(VatNumber::check('CZ', '12345678'));
@@ -59,6 +61,7 @@ class VatTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(VatNumber::check('LU', '12345678'));
         $this->assertTrue(VatNumber::check('MK', 'MK4032013544513'));
         $this->assertTrue(VatNumber::check('MT', '12345678'));
+        $this->assertTrue(VatNumber::check('NG', '01012345-0001'));
         $this->assertTrue(VatNumber::check('NL', '123456789B01'));
         $this->assertTrue(VatNumber::check('NO', '123456789'));
         $this->assertTrue(VatNumber::check('NO', '123456789MVA'));
@@ -73,6 +76,9 @@ class VatTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(VatNumber::check('RO', '12345678'));
         $this->assertTrue(VatNumber::check('RO', '123456789'));
         $this->assertTrue(VatNumber::check('RO', '1234567890'));
+        $this->assertTrue(VatNumber::check('RU', '9999999999'));
+        $this->assertTrue(VatNumber::check('RU', '999999999999'));
+        $this->assertTrue(VatNumber::check('RU', '9999999999999'));
         $this->assertTrue(VatNumber::check('SK', '1234567890'));
         $this->assertTrue(VatNumber::check('SI', '12345678'));
         $this->assertTrue(VatNumber::check('ES', 'X12345678'));
@@ -101,8 +107,10 @@ class VatTest extends PHPUnit_Framework_TestCase
         $this->assertFalse(VatNumber::check('AL', 'A999999999G'));
         $this->assertFalse(VatNumber::check('AT', 'U123456780'));
         $this->assertFalse(VatNumber::check('AU', '123456789012'));
+        $this->assertFalse(VatNumber::check('CA', '1234567ABC'));
         $this->assertFalse(VatNumber::check('IT', '001541899970'));
         $this->assertFalse(VatNumber::check('MK', 'MK40320135445131'));
+        $this->assertFalse(VatNumber::check('RU', '99999999999999'));
     }
 
     /**
