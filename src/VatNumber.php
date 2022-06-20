@@ -83,8 +83,8 @@ class VatNumber
             // 9 characters. Includes one or two alphabetical characters (first or last or first and last).
             return self::_checkLength($code, 9, 9) && self::_checkSpain($code);
         case "GB":
-            // 9 digits.
-            return self::_checkLength($code, 9, 9) && self::_numbersOnly($code);
+            // 9 to 12 digits.
+            return self::_checkLength($code, 9, 12) && self::_numbersOnly($code);
         case "HU":
             // 8 or 9 digits.
             return self::_checkLength($code, 8, 8) && self::_numbersOnly($code);
@@ -99,7 +99,7 @@ class VatNumber
             return self::_checkLength($code, 9, 9) && self::_numbersOnly($code);
         case "IN":
             // 15 digits.
-            return self::_checkLength($code, 15, 15) && self::_numbersOnly($code);
+            return self::_checkLength($code, 15, 15);
         case "IS":
             // 5 or 6 characters.
             return self::_checkLength($code, 5, 6);
