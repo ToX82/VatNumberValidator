@@ -4,6 +4,7 @@ composer.phar
 *.log
 *.tmp
 .env
+.phpunit.result.cache
 
 ## OS ##
 # Linux
@@ -24,4 +25,3 @@ Thumbs.db
 # IDE folders
 /.idea
 /.vscode
-.phpunit.result.cache
