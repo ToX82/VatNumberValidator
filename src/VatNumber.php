@@ -21,7 +21,6 @@ class VatNumber
      *
      * @param string $country Country code
      * @param string $code    VAT number
-     *
      * @return bool
      */
     public static function check(string $country, string $code): bool
@@ -39,7 +38,7 @@ class VatNumber
             return self::_checkLength($code, 11, 11) && self::_numbersOnly($code);
         case "BE":
             // 10 digits.
-            return self::_checkLength($code, 10, 10) && self::_numbersOnly($code);
+            return self::_checkLength($code, 10, 10) && self::_checkBelgium($code);
         case "BG":
             // 9 or 10 digits.
             return self::_checkLength($code, 9, 10) && self::_numbersOnly($code);
@@ -49,6 +48,9 @@ class VatNumber
         case "CA":
             // 9 characters.
             return self::_checkLength($code, 9, 9);
+        case "CO":
+            // 10 characters.
+            return self::_checkLength($code, 10, 10);
         case "HR":
             // 11 digits.
             return self::_checkLength($code, 11, 11) && self::_numbersOnly($code);
@@ -75,7 +77,7 @@ class VatNumber
             return self::_checkLength($code, 11, 11) && self::_checkFrance($code);
         case "DE":
             // 9 or 10 digits.
-            return self::_checkLength($code, 9, 9) && self::_numbersOnly($code);
+            return self::_checkLength($code, 9, 9) && self::_checkGermany($code);
         case "EL":
             // 9 digits.
             return self::_checkLength($code, 9, 9) && self::_numbersOnly($code);
@@ -186,7 +188,6 @@ class VatNumber
      * @param string $code VAT number
      * @param int    $min  Min length
      * @param int    $max  Max length
-     *
      * @return bool
      */
     private static function _checkLength(string $code, int $min, int $max): bool
@@ -198,7 +199,6 @@ class VatNumber
      * Checks that a string is only numbers.
      *
      * @param string $code VAT number
-     *
      * @return bool
      */
     private static function _numbersOnly(string $code): bool
@@ -211,7 +211,6 @@ class VatNumber
      * Eg. K99999999L or L99999999G
      *
      * @param string $code VAT number
-     *
      * @return bool
      */
     private static function _checkAlbania(string $code): bool
@@ -228,7 +227,6 @@ class VatNumber
      * Eg. U12345678
      *
      * @param string $code VAT number
-     *
      * @return bool
      */
     private static function _checkAustria(string $code): bool
@@ -242,11 +240,29 @@ class VatNumber
     }
 
     /**
+     * Additional validations for Belgium
+     * Eg. 09999999XX
+     *
+     * @param string $code VAT number
+     * @return bool
+     */
+    private static function _checkBelgium(string $code): bool
+    {
+        if (!preg_match('/^\d{8}[0-9][0-9]$/', $code)) {
+            return false;
+        }
+
+        $checkDigits = substr($code, 0, 8) % 97;
+        $checkDigits = sprintf('%02d', 97 - $checkDigits);
+
+        return substr($code, 8, 2) == $checkDigits;
+    }
+
+    /**
      * Additional validations for Switzerland
      * Eg. 123.456.789
      *
      * @param string $code VAT number
-     *
      * @return bool
      */
     private static function _checkSwitzerland(string $code): bool
@@ -264,7 +280,6 @@ class VatNumber
      * Eg. 12345678X
      *
      * @param string $code VAT number
-     *
      * @return bool
      */
     private static function _checkCyprus(string $code): bool
@@ -282,7 +297,6 @@ class VatNumber
      * Eg. 12345678901 - X1234567890 - 1X123456789 - XX123456789
      *
      * @param string $code VAT number
-     *
      * @return bool
      */
     private static function _checkFrance(string $code): bool
@@ -301,10 +315,44 @@ class VatNumber
     }
 
     /**
+    * Additional validations for Germany
+    * Eg. 122265872
+    *
+    * @param string $code VAT number
+    * @return bool
+    */
+    private static function _checkGermany(string $code): bool
+    {
+        $count = 1;
+        $product = 10;
+        $sum = 0;
+        $checkDigit = intval(substr($code, -1));
+        $result = 0;
+
+        while ($count < 9) {
+            $sum = (intval(substr($code, $count - 1, 1)) + $product) % 10;
+
+            if ($sum === 0) {
+                $sum = 10;
+            }
+
+            $product = (2 * $sum) % 11;
+            $count++;
+        }
+
+        $result = 11 - $product;
+
+        if ($result === 10) {
+            $result = 0;
+        }
+
+        return $result === $checkDigit;
+    }
+
+    /**
      * Additional validations for Ireland
      *
      * @param string $code Regional VAT code
-     *
      * @return bool
      */
     private static function _checkIreland(string $code): bool
@@ -324,7 +372,6 @@ class VatNumber
      * Additional validations for Italy
      *
      * @param string $code Regional VAT code
-     *
      * @return bool
      */
     private static function _checkItaly(string $code): bool
@@ -356,7 +403,6 @@ class VatNumber
      * Eg. MK4032013544513
      *
      * @param string $code Regional VAT code
-     *
      * @return bool
      */
     private static function _checkNorthMacedonia(string $code): bool
@@ -373,7 +419,6 @@ class VatNumber
      * Eg. 01012345-0001
      *
      * @param string $code Regional VAT code
-     *
      * @return bool
      */
     private static function _checkNigeria(string $code): bool
@@ -389,7 +434,6 @@ class VatNumber
      * Additional validations for Netherlands
      *
      * @param string $code Regional VAT code
-     *
      * @return bool
      */
     private static function _checkNetherlands(string $code): bool
@@ -406,7 +450,6 @@ class VatNumber
      * Additional validations for Norway
      *
      * @param string $code Regional VAT code
-     *
      * @return bool
      */
     private static function _checkNorway(string $code): bool
@@ -427,7 +470,6 @@ class VatNumber
      * Additional validations for Russia
      *
      * @param string $code Regional VAT code
-     *
      * @return bool
      */
     private static function _checkRussia(string $code): bool
@@ -443,7 +485,6 @@ class VatNumber
      * Additional validations for Spain
      *
      * @param string $code Regional VAT code
-     *
      * @return bool
      */
     private static function _checkSpain(string $code): bool
